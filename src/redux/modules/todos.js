@@ -77,6 +77,12 @@ const todos = (state = initialState, action) => {
           return todo.id === action.payload;
         }),
       };
+
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter(({ id }) => id !== action.payload),
+      };
     default:
       return state;
   }
