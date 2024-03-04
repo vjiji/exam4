@@ -6,9 +6,10 @@ import { addTodo } from "../../../redux/modules/todos.js";
 
 const Form = () => {
   const id = nextId();
+  const dispatch = useDispatch();
 
   const [todo, setTodo] = useState({
-    id: 0,
+    id: id,
     title: "",
     body: "",
     isDone: false,
@@ -23,12 +24,8 @@ const Form = () => {
     event.preventDefault();
     if (todo.title.trim() === "" || todo.body.trim() === "") return;
 
-    setTodo({
-      id: 0,
-      title: "",
-      body: "",
-      isDone: false,
-    });
+    dispatch(addTodo(todo));
+    setTodo({ id: id, title: "", body: "", isDone: false });
   };
 
   return (
@@ -49,7 +46,7 @@ const Form = () => {
           onChange={onChangeHandler}
         />
       </StInputGroup>
-      <StAddButton>추가하기</StAddButton>
+      <StAddButton onClick={onSubmitHandler}>추가하기</StAddButton>
     </StAddForm>
   );
 };

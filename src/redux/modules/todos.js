@@ -39,14 +39,7 @@ export const getTodoByID = (payload) => {
 
 // initial state
 const initialState = {
-  todos: [
-    {
-      id: "1",
-      title: "리액트",
-      body: "리액트를 배워봅시다",
-      isDone: false,
-    },
-  ],
+  todos: [],
   todo: {
     id: "0",
     title: "",
@@ -59,8 +52,7 @@ const todos = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {
-        ...state,
-        todos: [action.payload],
+        todos: [...state.todos, action.payload],
       };
 
     case TOGGLE_STATUS_TODO:
