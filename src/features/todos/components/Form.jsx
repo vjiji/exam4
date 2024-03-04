@@ -46,7 +46,7 @@ const Form = () => {
           onChange={onChangeHandler}
         />
       </StInputGroup>
-      <StAddButton onClick={onSubmitHandler}>추가하기</StAddButton>
+      <StAddButton>추가하기</StAddButton>
     </StAddForm>
   );
 };
